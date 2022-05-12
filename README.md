@@ -1,11 +1,11 @@
-## HOW TO RUN
+## How to Run
 ```
 ./install_tools.sh
 catkin_make -j1
 source devel/setup.zsh
 roslaunch mpc_car simulation.launch
 ```
-## HOW TO TURN PARAMETERS
+## How to Tune Parameters
 ```
 ./src/mpc_car/config/mpc_car.yaml -> mpc parameters
 ./src/car_simulator/config/car_simulator.yaml -> initial states (in simulation)
