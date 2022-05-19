@@ -104,7 +104,7 @@ class MpcCar {
     // Runge–Kutta
     VectorX k1 = diff(state, input);
     VectorX k2 = diff(state + k1 * dt / 2, input);
-    VectorX k3 = diff(state + k1 * dt / 2, input);
+    VectorX k3 = diff(state + k2 * dt / 2, input);
     VectorX k4 = diff(state + k3 * dt, input);
     state = state + (k1 + k2 * 2 + k3 * 2 + k4) * dt / 6;
   }
