@@ -32,7 +32,7 @@ struct Car {
     // Runge–Kutta
     Eigen::Vector4d k1 = diff(state, input);
     Eigen::Vector4d k2 = diff(state + k1 * dt / 2, input);
-    Eigen::Vector4d k3 = diff(state + k1 * dt / 2, input);
+    Eigen::Vector4d k3 = diff(state + k2 * dt / 2, input);
     Eigen::Vector4d k4 = diff(state + k3 * dt, input);
     state = state + (k1 + k2 * 2 + k3 * 2 + k4) * dt / 6;
   }

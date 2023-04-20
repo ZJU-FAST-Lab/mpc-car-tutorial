@@ -521,7 +521,7 @@ class MpcCar {
     lbfgs_params.past = 3;
     lbfgs_params.g_epsilon = 0.0;
     lbfgs_params.min_step = 1e-32;
-    lbfgs_params.delta = 1e-4;
+    lbfgs_params.delta = 1e-5;
     lbfgs_params.line_search_type = 0;
     double minObjective;
     auto ret = lbfgs::lbfgs_optimize(m * N_, x, &minObjective, &objectiveFunc, nullptr, nullptr, this, &lbfgs_params);
