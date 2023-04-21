@@ -56,13 +56,11 @@ class Nodelet : public nodelet::Nodelet {
   void odom_call_back(const nav_msgs::Odometry::ConstPtr& msg) {
     double x = msg->pose.pose.position.x;
     double y = msg->pose.pose.position.y;
-    Eigen::Quaterniond q(msg->pose.pose.orientation.w,
-                         msg->pose.pose.orientation.x,
-                         msg->pose.pose.orientation.y,
-                         msg->pose.pose.orientation.z);
-    Eigen::Vector3d euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+    double sin_y_2 = msg->pose.pose.orientation.z;
+    double cos_y_2 = msg->pose.pose.orientation.w;
+    double phi = 2 * atan2(sin_y_2, cos_y_2);
     Eigen::Vector2d v(msg->twist.twist.linear.x, msg->twist.twist.linear.y);
-    state_ << x, y, euler.z(), v.norm();
+    state_ << x, y, phi, v.norm();
     init = true;
   }
 
